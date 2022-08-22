@@ -1,0 +1,35 @@
+// Simple_ATL.idl : IDL source for Simple_ATL
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SimpleATL.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(a72d662a-d5cb-4d41-a89f-0110190d8d9c),
+	pointer_default(unique)
+]
+interface IFirstATL : IUnknown
+{
+	HRESULT AddNumbers([in] long Num1, [in] long Num2, [out] long* ReturnVal);
+};
+[
+	uuid(acdbeb24-1a5c-4876-96eb-688d842c7237),
+	version(1.0),
+]
+library SimpleATLLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(b925d0e3-9d3a-4ac2-97e3-73e6b21b485a)
+	]
+	coclass FirstATL
+	{
+		[default] interface IFirstATL;
+	};
+};
+
+import "shobjidl.idl";
